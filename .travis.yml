@@ -5,10 +5,10 @@ sudo: false
 install:
     - wget https://github.com/SKCraft/Launcher/archive/master.zip
     - unzip master.zip
-    - ./master/gradlew clean build
+    - ./Launcher-master/gradlew clean build
 
 script:
-    - java -jar ./master/launcher-builder/build/libs/launcher-builder-*.jar \
+    - java -jar ./Launcher-master/launcher-builder/build/libs/launcher-builder-*.jar \
       --version TRAVIS_BUILD_NUMBER \
       --input .
       --output build
