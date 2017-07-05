@@ -20,6 +20,6 @@ install:
 script:
     - java -jar ./Launcher-master/launcher-builder/build/libs/launcher-builder-*.jar \
       --version TRAVIS_BUILD_NUMBER \
-      --input .
+      --input "./LFG Project Ozone 2"
       --output build
       --manifest-dest "build/lfg_modpack.json"
