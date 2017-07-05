@@ -8,7 +8,7 @@ install:
     - ./master/gradlew clean build
 
 script:
-    - java -jar ./master/launcher-builder-*.jar \
+    - java -jar ./master/launcher-builder/build/libs/launcher-builder-*.jar \
       --version TRAVIS_BUILD_NUMBER \
       --input .
       --output build
