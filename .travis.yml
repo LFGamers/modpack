@@ -14,7 +14,7 @@ install:
     - unzip master.zip
     - cd ./Launcher-master
     - chmod +x ./build.sh
-    - ./build.sh
+    - ./gradlew clean build
     - cd -
 
 script:
