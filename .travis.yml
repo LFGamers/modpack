@@ -3,6 +3,7 @@ language: java
 install:
     - wget https://github.com/SKCraft/Launcher/archive/master.zip
     - unzip master.zip
+    - chmod +x ./Launcher-master/build.sh
     - ./Launcher-master/build.sh
 
 script:
