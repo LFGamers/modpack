@@ -21,6 +21,7 @@ script:
 - zip -r upload.zip build
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_c738aac456cd_key -iv $encrypted_c738aac456cd_iv -in deploy_rsa.enc -out deploy_rsa -d
+- openssl aes-256-cbc -K $encrypted_64a7da176b6f_key -iv $encrypted_64a7da176b6f_iv -in deploy_rsa.enc -out deploy_rsa -d
 - eval "$(ssh-agent -s)"
 deploy:
   - provider: script
