@@ -18,7 +18,7 @@ script:
 - java -jar ./Launcher-master/launcher-builder/build/libs/launcher-builder-4.3-SNAPSHOT-all.jar
   --version "$(echo TRAVIS_BUILD_NUMBER)" --input "./LFG Project Ozone 2" --output
   build --manifest-dest "build/lfg_modpack.json"
-- zip -r upload.zip upload
+- zip -r upload.zip build
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_c738aac456cd_key -iv $encrypted_c738aac456cd_iv
   -in deploy_rsa.enc -out deploy_rsa -d
