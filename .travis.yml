@@ -3,6 +3,8 @@ jdk:
 - oraclejdk8
 sudo: false
 addons:
+  artifacts:
+    working_dir: build
   apt:
     packages:
     - oracle-java8-installer
@@ -17,15 +19,3 @@ script:
 - java -jar ./Launcher-master/launcher-builder/build/libs/launcher-builder-4.3-SNAPSHOT-all.jar
   --version "$(echo TRAVIS_BUILD_NUMBER)" --input "./LFG Project Ozone 2" --output
   build --manifest-dest "build/lfg_modpack.json"
-deploy:
-  provider: s3
-  access_key_id: AWS_ACCESS_KEY
-  secret_access_key: AWS_SECRET_KEY
-  bucket: lfg-modpack
-  skip_cleanup: true
-  region: us-east-2
-  local_dir: build
-AWS_ACCESS_KEY:
-  secure: bDBVIGu1jxqBw/WdXgo5REYyXC/fI6irs7dhpQP28Z8Rce6Via0UlD6+IWxquvWfOn1UwCQ8DTKQdQBIwvBzMyKEySnNM1B8Jgn8aeyIZpF75Nt61LAY0dY+mKnStwJISz/mbJiJOvM2rIpaTSd55PPvNYivNPm5rl2p03Y9IvG99Eq/JvLAgYOjz1H3dUJFRCDySSO2eSGyfzVwSpzNj4wOEpJpER4mIpljJxhD7mCcm6sXBpqW89KKS3fXUM24XfMAZjvrdrklRfQGoaIE6954hMs/eXH2psAQoUdyTZPypTcd7RoPM6VcFTaHZnqSrJ4VZCUzL6zK73a1p/rAaDfdLfQx0CFAQScGYZSHCEii7M3vXLFuNSPZGoKW9t+Id/YQKXvpsDQ3snBLm3DkxhjzvsKGH7UHJLtKVUKQUgdLM0vfnI2gFDZ74ee9UgGJb8szXjW/QK0aYTzPd1IaPxSheYf705vM8Ky2S3HLI0wW/l4RaeqTa6Rgwm1TYv4XEuqsU2Y373tthFEhYgWhHFg55FM/Z4ZTFGu8XX4GuhEd/060xl3gyx1dNdh1PfqKVZRWlIfsVLNWL9AFC4bNI09xc2xPddpqohLyZFBOq367szjLMFRmEaMWDfaCMSEKmkYymN9+mgpZoURct3R0RMLfy5K8C7JYwUeaKbhmX9g=
-AWS_SECRET_KEY:
-  secure: DfW0r3cK8D0wBLsPmk3aVbmgxk9ll59cyrbT0pVcmfAbRUS8Jieyy6mXmhhoirTCDHb3zFPdcTRnlew0sNea8+Hv6Pv+oOPNrncTlrTHA8GruL2T56igbVqpUOrZn422rUCn1CM0sLgdqZ+lXPbtbx9hlvp+GrzFArRoa0fpjvr+TQ2zfMl8w9gy7o1JTLPn9xVuaMpRRDMyE1Sr1g5eC97iYmnuLLzdhS173YP8Nc05Cmy/DdepxJuceouCJKCuzT2SrF39PkK6wfuJHAXJNngAGFnvrAULZhvU5Tra5MT02AULyJ2hPTUqw0dbhME25qke8a3eEGYLH0d6NWLqof/ohJZwx1Q1sfOhcflW/4BN/+zqtDH2IHeqhYiIATFtHM2CDN46qJ6YiQ7I8QRLIf3SeVSIPVFcnd9nNQlv1HfUV6fHBTkt6xwCCLk7LTG3F9vtsMHpBpFn4tU0OhZIuuzT5XpLNqjNnqmA0rTTnE3KvyZuywUnV/iFIcirPiPle2A8nv2tn20pZuUAeeqseEAKQiA71hxGcPlFdK52i496zotBE5z6uyhVtnqHfpXvzYybmdPE8N/eahSPBy3SsjvVRHOlGNtHP5Ae4kBNkxF1vcrFwtn+Noy39oV9evGB/nIgSWfGj8HclwXHXbqnUrpeUC5IEi3BiLC5uhdezDM=
