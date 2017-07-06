@@ -3,11 +3,10 @@ jdk:
 - oraclejdk8
 sudo: false
 addons:
-  artifacts:
-    working_dir: build
   apt:
     packages:
     - oracle-java8-installer
+  ssh_known_hosts: revanchist.lfgame.rs
 install:
 - wget https://github.com/SKCraft/Launcher/archive/master.zip
 - unzip master.zip
@@ -19,6 +18,20 @@ script:
 - java -jar ./Launcher-master/launcher-builder/build/libs/launcher-builder-4.3-SNAPSHOT-all.jar
   --version "$(echo TRAVIS_BUILD_NUMBER)" --input "./LFG Project Ozone 2" --output
   build --manifest-dest "build/lfg_modpack.json"
-before_install:
+- zip -r upload.zip upload
+before_deploy:
 - openssl aes-256-cbc -K $encrypted_c738aac456cd_key -iv $encrypted_c738aac456cd_iv
   -in deploy_rsa.enc -out deploy_rsa -d
+  upload --manifest-dest "upload/lfg_modpack.json"
+- eval "$(ssh-agent -s)"
+deploy:
+  - provider: script
+    script: scp upload.zip modpack@revanchist.lfgame.rs:/var/www/modpack
+    skip_cleanup: true
+    on:
+      branch: master
+  - provider: script
+    script: ssh modpack@revanchist.lfgame.rs "cd /var/www/modpack && unzip upload.zip && rm upload.zip"
+    skip_cleanup: true
+    on:
+      branch: master
