@@ -3,8 +3,6 @@ jdk:
 - oraclejdk8
 sudo: false
 addons:
-  artifacts:
-    working_dir: upload
   apt:
     packages:
     - oracle-java8-installer
@@ -19,3 +17,10 @@ script:
 - java -jar ./Launcher-master/launcher-builder/build/libs/launcher-builder-4.3-SNAPSHOT-all.jar
   --version "$(echo TRAVIS_BUILD_NUMBER)" --input "./LFG Project Ozone 2" --output
   upload --manifest-dest "upload/lfg_modpack.json"
+- zip -r upload.zip upload
+deploy:
+  - provider: script
+    script: scp -r upload.zip modpack@revanchist.lfgame.rs:/var/www/modpack && ssh modpack@revanchist.lfgame.rs cd /var/www/modpack && unzip upload.zip && rm upload.zip
+    skip_cleanup: true
+    on:
+      branch: master
