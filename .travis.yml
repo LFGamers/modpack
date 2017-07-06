@@ -19,3 +19,11 @@ install:
 
 script:
     - java -jar ./Launcher-master/launcher-builder/build/libs/launcher-builder-4.3-SNAPSHOT-all.jar --version "$(echo TRAVIS_BUILD_NUMBER)" --input "./LFG Project Ozone 2" --output build --manifest-dest "build/lfg_modpack.json"
+
+deploy:
+  provider: s3
+  access_key_id: AWS_ACCESS_KEY
+  secret_access_key: AWS_SECRET_KEY
+  bucket: "lfg-modpack"
+  skip_cleanup: true
+  local_dir: build
