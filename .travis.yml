@@ -26,4 +26,5 @@ deploy:
   secret_access_key: AWS_SECRET_KEY
   bucket: "lfg-modpack"
   skip_cleanup: true
+  region: "us-east-2"
   local_dir: build
