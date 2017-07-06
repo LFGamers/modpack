@@ -20,7 +20,7 @@ script:
 - zip -r upload.zip upload
 deploy:
   - provider: script
-    script: scp -r upload.zip modpack@revanchist.lfgame.rs:/var/www/modpack && ssh modpack@revanchist.lfgame.rs cd /var/www/modpack && unzip upload.zip && rm upload.zip
+    script: scp -o "StrictHostKeyChecking no" -r upload.zip modpack@revanchist.lfgame.rs:/var/www/modpack && ssh -o "StrictHostKeyChecking no" modpack@revanchist.lfgame.rs cd /var/www/modpack && unzip upload.zip && rm upload.zip
     skip_cleanup: true
     on:
       branch: master
