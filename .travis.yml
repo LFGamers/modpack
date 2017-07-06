@@ -31,7 +31,7 @@ deploy:
     on:
       branch: master
   - provider: script
-    script: ssh modpack@revanchist.lfgame.rs "cd /var/www/modpack && rm -fr pack && unzip upload.zip && move build pack && rm upload.zip"
+    script: ssh modpack@revanchist.lfgame.rs "cd /var/www/modpack && rm -fr pack && unzip upload.zip && mv build pack && rm upload.zip"
     skip_cleanup: true
     on:
       branch: master
