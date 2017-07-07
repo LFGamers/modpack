@@ -15,5 +15,5 @@ recipes.addShaped(<appliedenergistics2:tile.BlockDrive>, [
 ]);
 
 # Being able to create carbon with coal in a pressure chamber
-recipes.remove(<ExtraPlanets:tier4Items>);
-mods.pneumaticcraft.Pressure.addRecipe([<minecraft:coal_block> * 2], 4, [<ExtraPlanets:tier4Items>], true);
+recipes.remove(<ExtraPlanets:tier4Items:5>);
+mods.pneumaticcraft.Pressure.addRecipe([<minecraft:coal_block> * 2], 4, [<ExtraPlanets:tier4Items:5>], true);
